@@ -166,8 +166,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px}
       <b>한국언니</b><small>KOREA UNNIE</small>
     </a>
     <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-set="ko" aria-pressed="false">한국어</button><button type="button" data-set="ja" aria-pressed="true">日本語</button>
-      <button type="button" data-set="en" aria-pressed="false">EN</button>
+      <button type="button" data-set="ja" aria-pressed="true">日本語</button><button type="button" data-set="en" aria-pressed="false">EN</button><button type="button" data-set="ko" aria-pressed="false">한국어</button>
     </div>
     <a class="btn" href="https://line.me/ti/p/4u-yy_xmLA" target="_blank" rel="noopener" data-i="navCta">ご相談はこちら</a>
   </div>
@@ -315,11 +314,10 @@ function render(lang){
   document.getElementById('steps').innerHTML=t.steps.map(([h,p],i)=>`<li><i>STEP ${i+1}</i><b>${h}</b><span>${p}</span></li>`).join('');
   document.getElementById('why').innerHTML=t.why.map(([h,p])=>`<div><h3>${h}</h3><p>${p}</p></div>`).join('');
   document.getElementById('faq').innerHTML=t.faq.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join('');
-  try{localStorage.setItem('sp-lang',lang)}catch(e){}
 }
-document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.set)));
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>{render(b.dataset.set);try{localStorage.setItem('sp-lang2',b.dataset.set)}catch(e){}}));
 let start='ja';
-try{const nl=(navigator.language||'');start=localStorage.getItem('sp-lang')||(nl.startsWith('ja')?'ja':nl.startsWith('ko')?'ko':'en')}catch(e){start='ja'}
+try{start=localStorage.getItem('sp-lang2')||'ja'}catch(e){start='ja'}
 if(location.hash==='#en')start='en';if(location.hash==='#ja')start='ja';if(location.hash==='#ko')start='ko';
 render(start);
 }
