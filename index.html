@@ -11,7 +11,7 @@ gtag('js', new Date());
 document.addEventListener('click',function(e){
   var a=e.target.closest&&e.target.closest('a,button');if(!a)return;
   var h=(a.getAttribute('href')||'')+' '+(a.id||'');
-  var ch=/line\.me/.test(h)?'line':/wa\.me/.test(h)?'whatsapp':/wcBtn/.test(h)?'wechat':/instagram\.com/.test(h)?'instagram':/linktr\.ee/.test(h)?'linktree':/mailto:/.test(h)?'email':'';
+  var ch=/line\.me/.test(h)?'line':/wa\.me/.test(h)?'whatsapp':/wcBtn/.test(h)?'wechat':/(instagram\.com|ig\.me)/.test(h)?'instagram':/linktr\.ee/.test(h)?'linktree':/mailto:/.test(h)?'email':'';
   if(ch){gtag('event','contact_click',{channel:ch});dataLayer.push({event:'contact_click',channel:ch});}
 },true);
 </script>
@@ -135,7 +135,7 @@ dialog::backdrop{background:rgba(30,22,16,.55)}
 #bkDlg .bk-f{padding:14px 20px 18px;border-top:1px solid rgba(58,47,39,.1);text-align:center}
 #bkDlg .bk-f p{font-size:13px;margin:0 0 10px}
 #bkDlg .bk-go{display:block;width:100%;border:0;border-radius:999px;min-height:54px;font:800 16px inherit;font-family:inherit;color:#fff;cursor:pointer;text-decoration:none;line-height:54px}
-#bkDlg .bk-go.line{background:#06c755}#bkDlg .bk-go.wa{background:#25d366}
+#bkDlg .bk-go.line{background:#06c755}#bkDlg .bk-go.ig{background:linear-gradient(90deg,#f58529,#dd2a7b,#8134af)}#bkDlg .bk-go.wa{background:#25d366}
 #bkDlg .bk-err{color:#c0392b;font-size:13.5px;min-height:18px;margin:0 0 6px}
 .bk-toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#3a2f27;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;z-index:100;max-width:90vw;text-align:center;opacity:0;transition:opacity .2s;pointer-events:none}
 .bk-toast.on{opacity:1}
@@ -373,7 +373,7 @@ place();play();
 </script>
 <script>
 {
-const LINE='https://line.me/ti/p/4u-yy_xmLA',WA='821073598277';
+const LINE='https://line.me/ti/p/4u-yy_xmLA',WA='821073598277',IG='https://ig.me/m/korea_unnie_';
 const L={
 ja:{t:'ご相談の予約',sub:'S PLANET · 外国人患者誘致業 登録事業者',intro:'ご相談はS PLANETのコーディネーターが日本語で直接対応します。下の内容を選ぶと、ご相談内容がコピーされてLINEが開きます。トーク画面に貼り付けて送信してください。',
  q:['どちらからお越しですか？','韓国での滞在資格は？','韓国の健康保険はありますか？','気になるサービスは？（複数選択可）','ご希望の時期は？','お名前・その他ご要望（任意）'],
@@ -385,11 +385,11 @@ en:{t:'Book a consultation',sub:'S PLANET · Registered medical tourism agency',
  country:['United States','Canada','United Kingdom','Australia','Other'],memo:'e.g. In Seoul March 10–17, want a lifting consultation.',name:'Your name',
  go:'Send on WhatsApp',note:'Your message is also copied, in case you need to paste it.',toast:'Copied! Opening WhatsApp…',err:'Please choose at least one service.',
  head:'[Consultation request] KOREA UNNIE by S PLANET',lab:['Country','Stay','Insurance','Interested in','When','Name','Notes'],cls:'wa'},
-ko:{t:'상담 예약',sub:'에스플래닛 · 외국인환자 유치업 등록',intro:'상담은 에스플래닛 상담사가 직접 해요. 아래 내용을 고르면 상담 내용이 복사되고 LINE이 열려요. 대화창에 붙여넣어 보내 주세요.',
+ko:{t:'상담 예약',sub:'에스플래닛 · 외국인환자 유치업 등록',intro:'상담은 에스플래닛 상담사가 직접 해요. 아래 내용을 고르면 상담 내용이 복사되고 인스타그램 DM 창이 열려요. 붙여넣어 보내 주세요.',
  q:['어디서 오세요?','한국엔 어떻게 와 계세요?','한국 건강보험이 있어요?','어떤 서비스가 궁금해요? (여러 개 골라도 돼요)','언제쯤 받고 싶어요?','이름·더 알려 주실 내용 (선택)'],
  country:['일본','미국','캐나다','영국','호주','그 밖'],memo:'예: 3월 10~17일 서울에 있어요. 리프팅 상담 받고 싶어요.',name:'이름',
- go:'내용 복사하고 LINE으로 보내기',note:'복사된 내용을 LINE 대화창에 붙여넣어 보내 주세요.',toast:'복사했어요! LINE 대화창에 붙여넣어 보내 주세요.',err:'서비스를 하나 이상 골라 주세요.',
- head:'[상담 예약] KOREA UNNIE by S PLANET',lab:['나라','체류','건강보험','관심','시기','이름','요청'],cls:'line'}
+ go:'내용 복사하고 인스타 DM 보내기',note:'복사된 내용을 인스타그램 DM 창에 붙여넣어 보내 주세요.',toast:'복사했어요! 인스타 DM 창에 붙여넣어 보내 주세요.',err:'서비스를 하나 이상 골라 주세요.',
+ head:'[상담 예약] KOREA UNNIE by S PLANET',lab:['나라','체류','건강보험','관심','시기','이름','요청'],cls:'ig'}
 };
 const C={
 stay:{ja:['旅行・短期滞在','留学・学生ビザ','就労・居住ビザ','その他'],en:['Travel · short visit','Study · student visa','Work · residence visa','Other'],ko:['여행 · 단기 방문','유학 · 학생 비자','일 · 거주 비자','그 밖']},
@@ -415,7 +415,7 @@ function msg(){const t=L[lang()],l=t.lab,n=document.getElementById('bkName').val
  const r=[t.head,`${l[0]}: ${document.getElementById('bkCountry').value}`];
  if(st.stay.length)r.push(`${l[1]}: ${st.stay[0]}`);if(st.ins.length)r.push(`${l[2]}: ${st.ins[0]}`);
  r.push(`${l[3]}: ${st.care.join(', ')}`);if(st.when.length)r.push(`${l[4]}: ${st.when[0]}`);if(n)r.push(`${l[5]}: ${n}`);if(m)r.push(`${l[6]}: ${m}`);return r.join('\n')}
-function update(){go.href=lang()==='en'?`https://wa.me/${WA}?text=${encodeURIComponent(msg())}`:LINE}
+function update(){const g=lang();go.href=g==='en'?`https://wa.me/${WA}?text=${encodeURIComponent(msg())}`:g==='ko'?IG:LINE}
 function copy(text){let ok=false;try{const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,text.length);ok=document.execCommand('copy');ta.remove()}catch(e){}
  try{navigator.clipboard&&navigator.clipboard.writeText(text)}catch(e){}return ok}
 function toast(t){const el=document.getElementById('bkToast');el.textContent=t;el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),4000)}
